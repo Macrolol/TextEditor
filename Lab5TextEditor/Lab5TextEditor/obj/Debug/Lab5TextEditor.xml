@@ -1,0 +1,128 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Lab5TextEditor
+</name>
+</assembly>
+<members>
+<member name="T:Lab5TextEditor.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Lab5TextEditor.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Lab5TextEditor.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:Lab5TextEditor.frmTextEdit.mnuHelpAbout_Click(System.Object,System.EventArgs)">
+ <summary>
+ This is the event that is called when the about button is pressed. It displays a helpful little message
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Lab5TextEditor.frmTextEdit.mnuNew_Click(System.Object,System.EventArgs)">
+ <summary>
+ This is the event that is called when teh "New" button is clicked
+ it first calls the ConfirmClose() function and then depending on the result it creates a new file
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Lab5TextEditor.frmTextEdit.mnuOpen_Click(System.Object,System.EventArgs)">
+ <summary>
+ This is the event that is called when the open button is clicked. It calls the ConfirmClose()
+ function and depending on the result it opens a file
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Lab5TextEditor.frmTextEdit.mnuCopy_Click(System.Object,System.EventArgs)">
+ <summary>
+ Boring old copy event. Quite simple it just sets the clipboard text to the selected text
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Lab5TextEditor.frmTextEdit.mnuCut_Click(System.Object,System.EventArgs)">
+ <summary>
+ This is the cut event, it is slightly more involved than the copy event. First it stores the cursor 
+ location, then sets the text in the textbox to be the text that was in the textbox - the selected text.
+ It then puts the cursor back to were it was. The cursor part probably wasn't needed but it felt weird that
+ it would reset it to the beginning.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Lab5TextEditor.frmTextEdit.mnuPaste_Click(System.Object,System.EventArgs)">
+ <summary>
+ This is the paste event, slightly more involved than cut. Saves cursor position,
+ removes the selected text and inserts the clipboard text. Then it puts the cursor at the end of
+ the pasted text. Once again the cursor stuff wasn't nessisary but it makes me feel good.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Lab5TextEditor.frmTextEdit.mnuSave_Click(System.Object,System.EventArgs)">
+ <summary>
+ This is the save button event, but it is also a function. If there is a file open just save to the same file, if not
+ use the save as button.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <returns>True if it saves, false if it does not</returns>
+</member>
+<member name="M:Lab5TextEditor.frmTextEdit.mnuSaveAs_Click(System.Object,System.EventArgs)">
+ <summary>
+ This is the save as button event, but like the save event/function it is also a function.
+ This event/function opens a save file dialog and saves the file in the specified location.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <returns>True if it saves, false if it does not</returns>
+</member>
+<member name="M:Lab5TextEditor.frmTextEdit.mnuExit_Click(System.Object,System.EventArgs)">
+ <summary>
+ This is the exit button event handler, it will first call the ConfirmClose() function and then maybe 
+ close depending on the result
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Lab5TextEditor.frmTextEdit.txtMainBox_TextChanged(System.Object,System.EventArgs)">
+ <summary>
+ This is the event handler for when the user changes the contents of the text box.
+ All it does is let everyone know that things have changed.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Lab5TextEditor.frmTextEdit.SaveFile(System.String)">
+ <summary>
+ This is the sub that saves the file it is called in the save and save as event handlers.
+ </summary>
+ <param name="path"> the path to write to </param>
+</member>
+<member name="M:Lab5TextEditor.frmTextEdit.UpdateFormTitle">
+ <summary>
+ This is the sub that updates the title. if the file has a name the title reflects that
+ </summary>
+</member>
+<member name="M:Lab5TextEditor.frmTextEdit.ConfirmClose">
+ <summary>
+ This is the function that confirms if the user wants to close file or open a new file. If the file has been modified since
+ it was last saved it will ask if the user wishes to save and bring up the coresponding save menu. 
+ There is also a fancy little bit of recursion
+ </summary>
+ <returns>True if the user wishes to close, false otherwise </returns>
+</member>
+</members>
+</doc>
